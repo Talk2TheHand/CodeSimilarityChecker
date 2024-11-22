@@ -31,18 +31,19 @@ While the script is useful, there are a few limitations and areas where it could
    git clone https://github.com/Talk2TheHand/CodeSimilarityChecker.git
    cd CodeSimilarityChecker
 Install the required Python packages:
+
 bash
 Copy code
 pip install -r requirements.txt
-Usage
+Usage:
+
 Ensure your Python version is 3.x or above.
 Place the script in a folder containing the Python files you want to analyze.
 Run the script:
 bash
 Copy code
 python detect_duplicates.py
-Review the results:
+Review Results:
+
 Check the terminal for a summary of duplicates.
 Open the generated HTML report for a detailed view, including line numbers and similarity percentages.
-Contributions
-If you’ve got an idea to improve the script, feel free to fork the repo and submit a pull request.
