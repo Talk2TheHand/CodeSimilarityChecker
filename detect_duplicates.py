@@ -130,16 +130,23 @@ def save_html_report(duplicates, output_file):
 
 
 def main():
-    directory = r"Z:\Jarvis\AI Recipe\backend\tests\unit\routes"
+    path = input("Enter the file or directory to scan: ")
+    similarity_threshold = 0.75
     extensions = [".py"]
-    similarity_threshold = 0.75  # Adjusted threshold for more sensitivity
-
-    files = [os.path.join(directory, f) for f in os.listdir(directory) if f.endswith(tuple(extensions))]
-    console.log(f"Scanning {len(files)} files for duplicates...")
-
+    
     total_duplicates = 0
     duplicate_clusters = []
     report_file_path = f"reports/duplicate_report_{datetime.now().strftime('%Y%m%d_%H%M%S')}.html"
+
+    if os.path.isfile(path):
+        console.log(f"Scanning file: {path}")
+        files = [path]
+    elif os.path.isdir(path):
+        console.log(f"Scanning directory: {path}")
+        files = [os.path.join(path, f) for f in os.listdir(path) if f.endswith(tuple(extensions))]
+    else:
+        console.print(f"[bold red]Error:[/] '{path}' is not a valid file or directory.")
+        return
 
     for file_path in files:
         with open(file_path, "r", encoding="utf-8") as f:
